@@ -11,7 +11,7 @@ parts, firstly with no regularization, second, with Batch Normalization and last
 
 CIFAR-100 dataset is used to implement all the architectures. The data-set has 100 classes containing 500 training
 images and 100 testing images, totalling to 60,000 images. Each class is a part of one of the 20 super classes.Each
-image comes with a fine label, the class to which it belongs, and a coarse label, the super class to which it belongs.[10]
+image comes with a fine label, the class to which it belongs, and a coarse label, the super class to which it belongs.
 Pre-Processing: Size of each image in the data-set is (32,32.3). To use it in the architectures I re-scaled the images
 by 255.0 and then converted them in to categorical data by one hot encoding. One- hot encoding is a representation of
 categorical variables as binary vectors. This method makes the deep learning model easier and faster to train. Also, it
@@ -28,7 +28,7 @@ which have convolution layers of 256 filter size and filter size (3, 3). This fo
 convolution layer with 512 filters of size (3,3) each, a max pool layer, and with same padding.This image is then passed
 to the stack of two convolution layers. After these convolutional layers and max pooling, we get (7,7,512) feature map,
 after this layers are flattened followed by 3 fully connected layers. In the end softmax layer is passed to normalize the
-classification vector.[11]
+classification vector.[10]
 Architecture I followed for each variation is as follows:
 
 <p align = "center">
@@ -162,7 +162,4 @@ model in each variation.
 7. https://github.com/priya-dwivedi/Deep-Learning/blob/master/resnetkeras=ResidualNetworksyourself:ipynb
 8. https://www.kaggle.com/athota1/vgg16-cifar100-v2/comments
 9. https://flyyufelix.github.io/2016/10/08/fine-tuning-in-keras-part2.html
-
-10.https://www.cs.toronto.edu/ kriz/cifar.html
-
-11.https://www.geeksforgeeks.org/vgg-16-cnn-model/
+10. https://www.geeksforgeeks.org/vgg-16-cnn-model/
