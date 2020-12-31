@@ -17,7 +17,7 @@ by 255.0 and then converted them in to categorical data by one hot encoding. One
 categorical variables as binary vectors. This method makes the deep learning model easier and faster to train. Also, it
 gives better outputs than the other method like integer encoding.
 
-***VGG16**
+**VGG16**
 
 VGG 16 was proposed by Karen Simonyan and Andrew Zisserman of the Visual Geometry Group Lab of Oxford
 University in 2014 in the paper “Very Deep Convolutional networks for large- scale image recognition”. Original
@@ -60,7 +60,7 @@ Architecture I followed for each variation is as follows:
    for. In case of SGD optimizer I reduced the convolution layers same as batch normalization for SGD optimizer and got
    70.05% training accuracy and 60.95% testing accuracy.
    
-***ResNet18**
+**ResNet18**
 
 ResNet architecture performs the initial convolution and max-pooling using 7×7 and 3×3 kernel sizes respectively.
 In stage 1 of the network it has 4 Residual blocks containing 2 layers each. The size of kernels used to perform the
@@ -71,7 +71,9 @@ from scratch is computationally heavy and lengthy. After the all the stages of c
 performed followed by flattening the layers and using dense layer of 100 neurons. I used data Augmentation to train the
 models.
 
-<img align = "center" src="ResNet-18-Architecture.png" width="450" height="350"/>
+<p align = "center">
+  <img align = "center" src="ResNet-18-Architecture.png" width="450" height="350"/>
+</p>
 
  * No Regularization
    To implement this I reduced the convolutional and max pooling layers in stage 2, 3 and 4 to half. Firstly I used one
@@ -93,7 +95,7 @@ models.
    regularizer and also used more layers in stage 2 but used half layers in stage 3 and 4. After training the model got
    trainig accuracy of 64.93% and testing accuracy of 55.94%.
    
-***Inception V2**
+**Inception V2**
 
 Inception V2 was introduced to in order to reduce the computational cost. In order to achieve that people who introduces
 this model factorized the 5x5 convolution to 3x3 convolution.Moreover, they factorize convolutions of filter size nxn to
@@ -102,7 +104,9 @@ bottleneck. The above three principles were used to build three different types 
 To implement this model on Cifar-100, i significantly reduced the number of filters in each convolution layer of the
 model in each variation.
 
-![Architecture of Inception V24](InceptionV2_architecture.png)
+<p align = "center">
+  <img align = "center" src="InceptionV2_architecture.png" width="450" height="350"/>
+</p>
 
  * No Regularization
    To implement this part of the architecture I used the original Inception V2 architecture excluding the two reduction
