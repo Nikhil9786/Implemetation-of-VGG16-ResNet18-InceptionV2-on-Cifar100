@@ -31,7 +31,7 @@ after this layers are flattened followed by 3 fully connected layers. In the end
 classification vector.[11]
 Architecture I followed for each variation is as follows:
 
-<img src="new41.jpg" width="500" height="500"/>
+<img src="new41.jpg" width="800" height="500"/>
   
   * No Regularization
     For No regularization, I was not allowed to use any kind of regularizers like batch normalization, weight decay or
