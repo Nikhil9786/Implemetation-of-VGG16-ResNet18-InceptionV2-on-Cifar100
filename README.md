@@ -2,27 +2,23 @@
 
 
 **Introduction**
-
-<dt>justify</dt>
-<dd>Aim of the project is to implement convolution neural network, VGG16, ResNet18 and Inception V2 architecture using
+Aim of the project is to implement convolution neural network, VGG16, ResNet18 and Inception V2 architecture using
 two optimizers, Adam and SGD. Also, to understand the architectures properly, architectures are implemented in three
-parts, firstly with no regularization, second, with Batch Normalization and lastly with Dropouts regularization.</dd>
+parts, firstly with no regularization, second, with Batch Normalization and lastly with Dropouts regularization.
 
 **Data-set and Pre-Processing**
 
-<dt>justify</dt>
-<dd>CIFAR-100 dataset is used to implement all the architectures. The data-set has 100 classes containing 500 training
+CIFAR-100 dataset is used to implement all the architectures. The data-set has 100 classes containing 500 training
 images and 100 testing images, totalling to 60,000 images. Each class is a part of one of the 20 super classes.Each
 image comes with a fine label, the class to which it belongs, and a coarse label, the super class to which it belongs.
 Pre-Processing: Size of each image in the data-set is (32,32.3). To use it in the architectures I re-scaled the images
 by 255.0 and then converted them in to categorical data by one hot encoding. One- hot encoding is a representation of
 categorical variables as binary vectors. This method makes the deep learning model easier and faster to train. Also, it
-gives better outputs than the other method like integer encoding.</dd>
+gives better outputs than the other method like integer encoding.
 
 **VGG16**
 
-<dt>justify</dt>
-<dd>VGG 16 was proposed by Karen Simonyan and Andrew Zisserman of the Visual Geometry Group Lab of Oxford
+VGG 16 was proposed by Karen Simonyan and Andrew Zisserman of the Visual Geometry Group Lab of Oxford
 University in 2014 in the paper “Very Deep Convolutional networks for large- scale image recognition”. Original
 architecture of the model is as follows: The input to the model is the image of dimension (224,224,3).The first two
 layers have 64 channels of (3,3) filter size and same padding. Then after a max pool layer of stride (2, 2), two layers
@@ -31,7 +27,7 @@ which have convolution layers of 256 filter size and filter size (3, 3). This fo
 convolution layer with 512 filters of size (3,3) each, a max pool layer, and with same padding.This image is then passed
 to the stack of two convolution layers. After these convolutional layers and max pooling, we get (7,7,512) feature map,
 after this layers are flattened followed by 3 fully connected layers. In the end softmax layer is passed to normalize the
-classification vector.[10]</dd>
+classification vector.[10]
 Architecture I followed for each variation is as follows:
 
 <p align = "center">
@@ -40,48 +36,44 @@ Architecture I followed for each variation is as follows:
   
   * No Regularization
   
-    <dt>justify</dt>
-    <dd>For No regularization, I was not allowed to use any kind of regularizers like batch normalization, weight decay or
+    For No regularization, I was not allowed to use any kind of regularizers like batch normalization, weight decay or
     dropouts. To implement this I reduced the convolutional and max pooling layers to 6 and 3 respectively. Firstly I used
     two convolution layers of kernel size 64 with 64 such filters followed by max pooling of pool size 2. Then again used
     two such combination of convolution layers and max pooling of same size, (3,3) with 128 and 256 filters respectively.
     Earlier, I used the ’relu’ activation but while training the model it was over-fitting after certain point with very low
     accuracy. Therefore, I changed the Activation to ’LeakyRelu’ which gave me better training accuracy of 61.05% and
     testing accuracy of 50.82% for Adam optimizer and 42.13% and 37.95% for SGD optimizer which is significantly
-    lower than the adam optimizer.</dd>
+    lower than the adam optimizer.
  
  * Batch Normalization
  
-   <dt>justify</dt>
-   <dd>For implementation of VGG16 using regularizer batch normalization, I used the original architecture of VGG16 as
+   For implementation of VGG16 using regularizer batch normalization, I used the original architecture of VGG16 as
    described above. I used batch normalization after every stack on layers to reduce the trainable parameters and train the
    model faster. In the end i reduced the size of filters of two dense layers from 4096 to 2048 and 1024 respectively. When
    training the model, i used data augmentation to increases the training dataset which resulted in better accuracies. The
    training accuracy I achieved is 87.94% and testing accuracy of 62.3% for adam optimize. For SGD optimizer i reduced
-   the convolution layers to 10 layers and got 68.35% training accuracy and 53.35% testing accuracy.</dd>
+   the convolution layers to 10 layers and got 68.35% training accuracy and 53.35% testing accuracy.
  
  * Dropouts
  
-   <dt>justify</dt>
-   <dd>For implementation of VGG16 using regularizer dropouts, I used the original architecture of VGG16 as described above.
+   For implementation of VGG16 using regularizer dropouts, I used the original architecture of VGG16 as described above.
    I used batch normalization after every stack on layers to reduce the trainable parameters. In the end i reduced the size of
    filters of two dense layers from 4096 to 2048 and 1024 respectively. When training the model, i used data augmentation
    to increases the training dataset which resulted in better accuracies. The training accuracy I achieved is 92.36% and
    testing accuracy of 62.23% for adam optimizer,which is almost equal to one i got with batch normalization regularizer
    for. In case of SGD optimizer I reduced the convolution layers same as batch normalization for SGD optimizer and got
-   70.05% training accuracy and 60.95% testing accuracy.</dd>
+   70.05% training accuracy and 60.95% testing accuracy.
    
 **ResNet18**
 
-<dt>justify</dt>
-<dd>ResNet architecture performs the initial convolution and max-pooling using 7×7 and 3×3 kernel sizes respectively.
+ResNet architecture performs the initial convolution and max-pooling using 7×7 and 3×3 kernel sizes respectively.
 In stage 1 of the network it has 4 Residual blocks containing 2 layers each. The size of kernels used to perform the
 convolution operation in 2 layers of the block of stage 1 are 64 and 64 respectively.Similarly, for all the other stages I
 used 128, 256 and 512 number of filters. Resnet is of two types namely without skip and skip, i used the skip ResNet
 architecture as it gives more accuracy and it is easier to train this model, although the process to construct this model
 from scratch is computationally heavy and lengthy. After the all the stages of convolution stages, average pooling is
 performed followed by flattening the layers and using dense layer of 100 neurons. I used data Augmentation to train the
-models.</dd>
+models.
 
 <p align = "center">
   <img align = "center" src="ResNet-18-Architecture.png" width="450" height="350"/>
@@ -89,39 +81,35 @@ models.</dd>
 
  * No Regularization
  
-   <dt>justify</dt>
-   <dd>To implement this I reduced the convolutional and max pooling layers in stage 2, 3 and 4 to half. Firstly I used one
+   To implement this I reduced the convolutional and max pooling layers in stage 2, 3 and 4 to half. Firstly I used one
    convolution layer of kernel size 7x7 with 64 such filters followed by max pooling of pool size 2. I used the ’relu’
    activation but while training the model it was over-fitting after certain point with very low accuracy. Therefore, I
    reduced the learning rate to 1e-03 which gave me training accuracy of 93.46% and testing accuracy of 55.06% for
-   Adam optimizer and 62.61% training accuracy and 49.19% testing accuracy for SGD optimizer.</dd>
+   Adam optimizer and 62.61% training accuracy and 49.19% testing accuracy for SGD optimizer.
    
  * Batch Normalization
  
-   <dt>justify</dt>
-   <dd>To implement this, I used the same architecture used in no regularization. Used batch normalization regularizer after
+   To implement this, I used the same architecture used in no regularization. Used batch normalization regularizer after
    every convolution layer. This helped in reducing the trainable parameters and train the model faster. For Adam optimizer,
    I got training accuracy of 94.77% and testing accuracy of 55.84%. For SGD optimizer, training accuracy is 97.7% and
-   testing accuracy of 54.86%.</dd>
+   testing accuracy of 54.86%.
    
  * Dropouts
  
-   <dt>justify</dt>
-   <dd>For this regularization method, I used dropotus with rate of 0.5 after every convolution layer. Also, to avoid the
+   For this regularization method, I used dropotus with rate of 0.5 after every convolution layer. Also, to avoid the
    overfitting and to train the model faster I used batch normalization too. After training model I got the training accuracy
    of of 69.37% and testing accuracy of 58.24% for Adam optimizer. For SGD optimizer I didnt use batch normalization
    regularizer and also used more layers in stage 2 but used half layers in stage 3 and 4. After training the model got
-   trainig accuracy of 64.93% and testing accuracy of 55.94%.</dd>
+   trainig accuracy of 64.93% and testing accuracy of 55.94%.
    
 **Inception V2**
 
-<dt>justify</dt>
-<dd>Inception V2 was introduced to in order to reduce the computational cost. In order to achieve that people who introduces
+Inception V2 was introduced to in order to reduce the computational cost. In order to achieve that people who introduces
 this model factorized the 5x5 convolution to 3x3 convolution.Moreover, they factorize convolutions of filter size nxn to
 a combination of 1xn and nx1 convolutions. he filter banks in the module were expanded to remove the representational
 bottleneck. The above three principles were used to build three different types of inception modules as follows:
 To implement this model on Cifar-100, i significantly reduced the number of filters in each convolution layer of the
-model in each variation.</dd>
+model in each variation.
 
 <p align = "center">
   <img align = "center" src="InceptionV2_architecture.png" width="450" height="350"/>
@@ -129,29 +117,26 @@ model in each variation.</dd>
 
  * No Regularization
  
-   <dt>justify</dt>
-   <dd>To implement this part of the architecture I used the original Inception V2 architecture excluding the two reduction
+   To implement this part of the architecture I used the original Inception V2 architecture excluding the two reduction
    convolutional blocks. To avoid the over-fitting and increase the accuracy, I used ’elu’ activation instead of ’relu’.
    After training the model i got training accuracy of 64% and testing accuracy of 32.64% for adam optimizer. For SGD
-   optimizer, I got the training accuracy of 59.5% and testing accuracy of 39.45%.</dd>
+   optimizer, I got the training accuracy of 59.5% and testing accuracy of 39.45%.
    
  * Batch Normalization
  
-   <dt>justify</dt>
-   <dd>For batch normalization I used LeakyRelu activation as elu and relu both were unable to avoid over-fitting. Also, used
+   For batch normalization I used LeakyRelu activation as elu and relu both were unable to avoid over-fitting. Also, used
    batch normalization only at the end of all layers of each convolutional block. I reduced the number of convolutional
    block A,B and C to 2,3 and 1 respectively.For adam optimizer i got training accuracy of 51.55% and testing accuracy of
-   33.42%. For SGD optimizer, training accuracy is 65.78% and testing accuracy of 44.45%.</dd>
+   33.42%. For SGD optimizer, training accuracy is 65.78% and testing accuracy of 44.45%.
    
  * Dropouts
- 
-   <dt>justify</dt>
-   <dd>For dropout regularization, I didnt use the data augmentation and model fit generator, instead I used model fit and
+   
+   For dropout regularization, I didnt use the data augmentation and model fit generator, instead I used model fit and
    increased the trainable prameters by not using the reduction blocks and also reducing the number of convolution blocks
    A,B and C to 2,3 and 1 respectively. For this part also, I used Leaky Relu activation instead of relu and elu as that were
    unable to avoid the over-fitting of the model. After training the model for adam optimizer, I got training and testing
    accuracy of 76.72 and 32% respectively. For SGD optimizer, I got the training and testing accuracy of 91.98% and
-   36.89% respectively.</dd>
+   36.89% respectively.
    
 **Final Results**
 
