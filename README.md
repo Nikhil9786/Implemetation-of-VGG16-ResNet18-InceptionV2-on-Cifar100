@@ -31,7 +31,7 @@ after this layers are flattened followed by 3 fully connected layers. In the end
 classification vector.[11]
 Architecture I followed for each variation is as follows:
 
-<img alighn = "center" src="new41.jpg" width="900" height="400"/>
+<img align = "center" src="new41.jpg" width="900" height="400"/>
   
   * No Regularization
     For No regularization, I was not allowed to use any kind of regularizers like batch normalization, weight decay or
@@ -69,7 +69,7 @@ from scratch is computationally heavy and lengthy. After the all the stages of c
 performed followed by flattening the layers and using dense layer of 100 neurons. I used data Augmentation to train the
 models.
 
-<img alighn = "center" src="ResNet-18-Architecture.png" width="500" height="500"/>
+<img align = "center" src="ResNet-18-Architecture.png" width="450" height="350"/>
 
  * No Regularization
    To implement this I reduced the convolutional and max pooling layers in stage 2, 3 and 4 to half. Firstly I used one
